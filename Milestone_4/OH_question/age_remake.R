@@ -14,7 +14,7 @@ x <- boroughs_by_age
 # drop prefixes from name, add a location col to all, then Rbind all sets together
 # maybe this could be looped?
 
-# view(y)
+view(x)
 
 bk <- x %>% 
 select(group, starts_with("BK")) %>% 
@@ -54,5 +54,6 @@ names(si) <- substring(names(si),4,21)
 
 # bind all regions together 
 
-remake1 <- bind_rows(bk, bx, mn, qn, si)
+remake1 <- bind_rows(bk, bx, mn, qn, si) %>% 
+  clean_names()
 
